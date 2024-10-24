@@ -1,46 +1,5 @@
 import turtle as t
 
-
-
-def draw_shape_from_file(turta):
-    """
-    Prompts the user for a text file path, reads its content, and uses
-    the draw_shape function to generate an image.
-    """
-    # Prompt user for file path and remove surrounding whitespace
-    file_path = input("Enter the path of the .txt file containing shape data: ").strip()
-
-    # Check if the file has a valid '.txt' extension
-    if not file_path.lower().endswith('.txt'):
-        print("Error: Please provide a valid '.txt' file.")
-        return
-
-    try:
-        # Open and read the content of the file
-        with open("first//assingnments//drawing01.txt", 'r') as file:
-            shape_data = file.read().strip()
-
-        # Check if the file is empty
-        if not shape_data:
-            print("Error: The file is empty. Please provide a valid shape definition.")
-            return
-
-        # Use the draw_shape function to draw the shape based on the file content
-        draw_shape(turta, shape_data)
-        print("Shape successfully drawn from the file!")
-
-    except FileNotFoundError:
-        print(f"Error: The file '{file_path}' was not found.")
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-
-# Example usage:
-# Assuming `turta` is your turtle object and `draw_shape_from_file` is properly defined:
-# draw_shape_from_file(turta)
-
-
-
-
 # Function to get color from a character without using a dictionary
 def get_color(character):
     if character == '0':
@@ -60,7 +19,7 @@ def get_color(character):
     elif character == '7':
         return 'sienna'
     elif character == '8':
-        return 'tan'
+        return 'tag'
     elif character == '9':
         return 'gray'
     elif character == 'A':
@@ -137,7 +96,7 @@ def draw_grid(turta):
     grid2='20202020202020202020'
     start_y=turta
     for i in range(1,21):
-        if i% 2 == 0: #we gave a condition saying if i is an even number use grid2 orelse use grid 1 (basically being odd)
+        if i%2==0: #we gave a condition saying if i is an even number use grid2 orelse use grid 1 (basically being odd)
             draw_line_from_string(grid2,turta)
         else:
             draw_line_from_string(grid1,turta)
@@ -148,10 +107,10 @@ def draw_grid(turta):
 
 
 def draw_shape(turta, shape_description):
-    """
-    Takes a turtle object and a description of a shape, validates it,
+   
+    """Takes a turtle object and a description of a shape, validates it,
     and then draws the corresponding shape.
-    """
+"""   
     # Validate the shape description (this could be improved depending on the expected format)
     if not isinstance(shape_description, str) or not shape_description.strip():
         print("Error: Invalid shape description provided.")
@@ -171,15 +130,43 @@ def draw_shape(turta, shape_description):
         print(f"An error occurred while drawing the shape: {e}")
 
 
+def draw_shape_from_file(turta):
+    """
+    Prompts the user for a text file path, reads its content, and uses
+    the draw_shape function to generate an image.
+    """
+    # Prompt user for file path and remove surrounding whitespace
+    file_path = input("Enter the path of the .txt file containing shape data: ").strip()
+
+    # Check if the file has a valid '.txt' extension
+    if not file_path.lower().endswith('.txt'):
+        print("Error: Please provide a valid '.txt' file.")
+        return
+
+    try:
+        # Open and read the content of the file
+        with open(file_path, 'r') as file:
+            shape_data = file.read().strip()
+
+        # Check if the file is empty
+        if not shape_data:
+            print("Error: The file is empty. Please provide a valid shape definition.")
+            return
+
+        # Use the draw_shape function to draw the shape based on the file content
+        draw_shape(turta, shape_data)
+        print("Shape successfully drawn from the file!")
+
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' was not found.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
 
 # Create a turtle object
 t.speed(0)  # Set turtle speed to maximum for faster drawing
 draw_grid(20)
 # End the turtle drawing
 t.done()
-
-
-def main():
-    draw_shape_from_file()
-    draw_color_pixel()
-    draw_line_from_string()
+draw_shape()
+draw_shape_from_file()
