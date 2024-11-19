@@ -160,3 +160,132 @@ if __name__ == '__main__':
             speak("What would you like me to call you")
             assname = takeCommand()
             speak("Thanks for naming me")
+        elif "what's your name" in query or "What is your name" in query:
+            speak("My friends call me")
+            speak(assname)
+            print("My friends call me", assname)
+        elif 'exit' in query:
+            speak("Thanks for giving me your time")
+            exit()
+        elif "who made you" in query or "Who created you" in query:
+            speak("I have been created by Aladin")
+        elif 'joke' in query:
+            speak(pyjokes.get_joke())
+        elif "calculate" in query:
+            app_id = "Wolframalpaha api id"
+            client = wolframalpha.Client(app_id)
+            indx = query.lower().split().index('calculate')
+            query = query.split()[indx + 1:]
+            res = client.query(''.join(query))
+            answer = next(res.results).text
+            print("The answer is " + answer)
+            speak("The answer is " + answer)
+        elif 'search' in query or 'play' in query:
+            query = query.replace("search", "")
+            query = query.replace("play", "")
+            webbrowser.open(query)
+        elif "who i am" in query:
+            speak("If you talk then definitely your human")
+        elif "why you came to world" in query:
+            speak("Thanks for the developers")
+        elif 'power point presentation' in query:
+            speak("Opening power point presentation")
+            power = r"C:\\Users\\HP\Documents\\PowerPoint Presentations"
+            os.startfile(power)
+        elif 'is love' in query:
+            speak("It is 7th sense that destroy all other sences")
+        elif "who are you" in query:
+            speak("I am a virtual assistant")
+        elif "reason for you" in query:
+            speak("I was created because professors neveer teach us proper things and projects")
+        elif 'change background' in query:
+            ctypes.windll.user32.SystemParametersInfoW(20,
+                                                       0,
+                                                       "Location of wallpaper",
+                                                       0)
+            speak("Background changed successfully")
+        elif 'open telegram' in query:
+            appli = r"C:\\Users\\akhli\\AppData\\Roaming\\Telegram Desktop\\Telegram.exe"
+            os.startfile(appli)
+        elif 'news' in query:
+            try:
+                jsonObj = urlopen(https://www.thetimes.com/)
+                data = json.load(jsonObj)
+                i = 1
+                speak("here are some news")
+                print("The Times" + '\n')
+                for item in data['articles']:
+                    print(str(i) + '. ' + item['title'] + '\n')
+                    print(item['description'] + '\n')
+                    speak(str(i) + '. ' + item['title'] + item['description'])
+                    i += 1
+            except Exception as e:
+                print(str(e))
+        elif 'lock window' in query:
+            speak("locking the device")
+            ctypes.windll.user32.LockWorkStation()
+        elif 'shutdown system' in query:
+            speak("shutting down the system")
+            subprocess.call('shutdown / p / f')
+        elif 'empty recycle bin' in query:
+            winshell.recycle_bin().empty(confirm = False, show_progress = False, sound = True)
+            speak("Recycle bin Recycled")
+        elif "don't listen" in query or "stop listening" in query:
+            speak("how much time you want to stop me from listening")
+            a = int(takeCommand())
+            time.sleep(a)
+            print(a)
+        elif 'where is' in query:
+            query = query.replace("Where is", "")
+            location = query
+            speak("User asked to locate")
+            speak(location)
+            webbrowser.open("https://www.google.com/maps/place/" + location + "")
+        elif 'camera' in query or "take a photo" in query:
+            ec.capture(0, "Jarvish camera", "img.jpg")
+        elif "restart" in query:
+            subprocess.call(["shutdown", "/r"])
+        elif "hibernate" in query or "sleep" in query:
+            speak("Hebernating")
+            subprocess.call("shutdown / h")
+        elif "log off" in query or "sign out" in query:
+            speak("Shuttign down")
+            time.sleep(5)
+            subprocess.call(["shutdown", "/l"])
+        elif "write a note" in query:
+            speak("What should i write in the note")
+            note = takeCommand()
+            file = open("jarvis.txt", "w")
+            speak("Sir, I am writing the note")
+            snfm = takeCommand()
+            if 'yes' in snfm or 'sure' in snfm:
+                strTime = datetime.datetime.now().strftime("% H:% M:% S")
+                file.write(strTime)
+                file.write(" :- ")
+                file.write(note)
+            else:
+                file.write(note)
+        elif "show note" in query:
+            speak("Showing Notes")
+            file = open("jarvis.txt", "r")
+            print(file.read())
+            speak(file.read(6))
+        elif "update assistant" in query:
+            speak("After downloading file please replace this file with the downloaded one")
+            url = "https://github.com/theakhliddin/first/tree/master/self"
+            r = requests.get(url, stream = True)
+            with open("self.py", "wb") as Pypdf:
+                total_length = int(r.headers.get('content-length'))
+                for ch in progress.bar(r.iter_content(chunk_size=2391975), expected_size = (total_length / 1024) + 1):
+                    if ch:
+                        Pypdf.write(ch)
+        elif 'aladin' in query:
+            wishMe()
+            speak("Aladin in your service")
+            speak(assname)
+        elif "wikipedia" in query:
+            webbrowser.open("wikipedia.com")
+        elif "good morning" in query:
+            speak("Good morning sir")
+            speak("How are you today?")
+            speak(assname)
