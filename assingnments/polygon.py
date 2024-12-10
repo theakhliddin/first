@@ -64,6 +64,6 @@ def main():
     for i in poly:
         print(i)
         print("Circumference is :",i.calculate_circumference())
-    
+    print(poly1==poly2)
 if __name__=="__main__":
     main()

@@ -1,5 +1,4 @@
 import polygon as poly
-import pytest
 
 #Step 1 - Danay
 '''Test code for the created class and 
