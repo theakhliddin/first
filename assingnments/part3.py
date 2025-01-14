@@ -56,11 +56,3 @@ def draw_shape_from_file(turta):
         print(f"Error: The file '{file_path}' was not found.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-
-# Example usage:
-# Assuming `turta` is your turtle object and `draw_shape_from_file` is properly defined:
-# draw_shape_from_file(turta)
-
-def main():
-    draw_shape()
-    draw_shape_from_file()
