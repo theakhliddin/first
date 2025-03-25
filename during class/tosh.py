@@ -1,13 +1,13 @@
-import turtle
+import turtle as t
 
 def drawlines ():
-    turtle.forward(100)
-    turtle.left(87)
-    turtle.setheading(127)
-    turtle.down()
-    turtle.goto(50, 50)
-    turtle.home()
-    turtle.circle(25)
+    t.forward(100)
+    t.left(87)
+    t.setheading(127)
+    t.down()
+    t.goto(50, 50)
+    t.home()
+    t.circle(25)
 
 def main():
     drawlines()

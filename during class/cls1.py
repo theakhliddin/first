@@ -17,5 +17,4 @@ def main():
     fruit3 = Fruits()
     print("Fruit name:" ,fruit3.name,"Season: ",fruit3.season)
 
-if __name__ == "__main__":
-    main()
+main()
