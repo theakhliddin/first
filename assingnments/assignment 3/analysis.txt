@@ -1,0 +1,25 @@
+Observations based on assingment:
+
+1. Insertion Sort:  
+    Random Data: Slow for large arrays (O(n²)).  
+    Sorted Data: Fastest (O(n) time, no swaps needed).  
+
+2. Merge Sort:  
+    Random/Sorted Data: Consistent O(n log n) speed.  
+
+3. Quick Sort:  
+    Random Data: Fast with good pivot (O(n log n)).  
+    Sorted Data: Slow with bad pivot (O(n²)).  
+
+4. Hybrid Sort:  
+    Random Data: Matches Quick Sort’s speed.  
+    Sorted Data: Switches to Insertion Sort (O(n)).  
+
+Take away: 
+ Best for Random Data: Hybrid Sort ≈ Merge Sort.  
+ Best for Sorted Data: Hybrid Sort = Insertion Sort.  
+ Worst for Sorted Data: Quick Sort (poor pivot choice).  
+
+
+Conclusion:
+Hybrid Sort adapts to input type, making it the most efficient overall.  
