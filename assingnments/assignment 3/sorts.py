@@ -1,7 +1,22 @@
-import math
+"""
+This script contains sorting algorithms used for testing and comparison.
+These functions follow the basic logic taught in class and are written
+in a simple, clear manner without optimization or helper functions.
 
-# Insertion Sort (as provided)
+Functions:
+insertion_sort() - Sorts using insertion sort (good for small or sorted data)
+merge_sort() - Sorts using merge sort (split and merge method)
+quick_sort() - Sorts using quick sort with last-element pivot
+quick_insertion_sort() - Hybrid that uses quick sort but switches to insertion sort when depth is too deep
+"""
+
+# Insertion Sort
 def insertion_sort(array):
+    """
+    Sorts an array using insertion sort.
+    Starts from the second element and compares backward,
+    placing it in the correct position in the sorted portion.
+    """
     for index in range(1, len(array)):
         current_value = array[index]
         compare_index = index - 1
@@ -11,70 +26,73 @@ def insertion_sort(array):
         array[compare_index + 1] = current_value
     return array
 
-# Merge Sort implementation
+# Merge Sort
 def merge_sort(array):
+    """
+    Sorts an array using merge sort.
+    Splits array into halves, sorts each, and merges them back together.
+    """
     if len(array) <= 1:
-        return array.copy()
-    
-    mid = len(array) // 2
-    left = merge_sort(array[:mid])
-    right = merge_sort(array[mid:])
-    
+        return array
+
+    middle_index = len(array) // 2
+    left_half = merge_sort(array[:middle_index])
+    right_half = merge_sort(array[middle_index:])
+
     merged = []
-    i = j = 0
-    while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
-            merged.append(left[i])
-            i += 1
+    left_index = 0
+    right_index = 0
+    while left_index < len(left_half) and right_index < len(right_half):
+        if left_half[left_index] <= right_half[right_index]:
+            merged.append(left_half[left_index])
+            left_index += 1
         else:
-            merged.append(right[j])
-            j += 1
-    
-    merged += left[i:]
-    merged += right[j:]
+            merged.append(right_half[right_index])
+            right_index += 1
+    while left_index < len(left_half):
+        merged.append(left_half[left_index])
+        left_index += 1
+    while right_index < len(right_half):
+        merged.append(right_half[right_index])
+        right_index += 1
+
     return merged
 
-# Fixed Quick Sort with better pivot selection
+# Quick Sort
 def quick_sort(array):
+    """
+    Sorts an array using quick sort.
+    Uses the middle element as pivot to avoid worst-case recursion on sorted arrays.
+    """
     if len(array) <= 1:
-        return array.copy()
-    
-    # Median-of-three pivot selection
-    first = array[0]
-    mid = array[len(array)//2]
-    last = array[-1]
-    pivot = sorted([first, mid, last])[1]
-    
-    lower = [x for x in array if x < pivot]
-    equal = [x for x in array if x == pivot]
-    higher = [x for x in array if x > pivot]
-    
-    return quick_sort(lower) + equal + quick_sort(higher)
+        return array
+    pivot = array[len(array) // 2]
+    left = [x for x in array if x < pivot]
+    middle = [x for x in array if x == pivot]
+    right = [x for x in array if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
 
-# Fixed Hybrid Sort with recursion depth control
-def quick_insertion_sort(array, depth=0):
-    if len(array) <= 15:
-        arr_copy = array.copy()
-        insertion_sort(arr_copy)
-        return arr_copy
-    
-    # Prevent excessive recursion
-    max_depth = 2 * math.floor(math.log2(len(array)))
-    if depth > max_depth:
-        arr_copy = array.copy()
-        insertion_sort(arr_copy)
-        return arr_copy
-    
-    # Improved pivot selection
-    first = array[0]
-    mid = array[len(array)//2]
-    last = array[-1]
-    pivot = sorted([first, mid, last])[1]
-    
-    lower = [x for x in array if x < pivot]
-    equal = [x for x in array if x == pivot]
-    higher = [x for x in array if x > pivot]
-    
-    return (quick_insertion_sort(lower, depth+1) +
-            equal +
-            quick_insertion_sort(higher, depth+1))
+
+# Hybrid Quick-Insertion Sort
+def quick_insertion_sort(an_array, depth=0, max_depth=None):
+    """
+    Sorts using quick sort, but switches to insertion sort
+    if recursion gets too deep. Useful when input is sorted.
+    """
+    if len(an_array) < 2:
+        return an_array
+
+    if max_depth is None:
+        max_depth = 2 * (len(an_array).bit_length())
+
+    if depth >= max_depth:
+        return insertion_sort(an_array[:])
+
+    pivot = an_array[-1]
+    lower_values = [element for element in an_array[:-1] if element <= pivot]
+    higher_values = [element for element in an_array[:-1] if element > pivot]
+
+    sorted_lower = quick_insertion_sort(lower_values, depth + 1, max_depth)
+    sorted_higher = quick_insertion_sort(higher_values, depth + 1, max_depth)
+
+    return sorted_lower + [pivot]+sorted_higher
