@@ -35,6 +35,7 @@ def main():
     plt.title("Performance on Random Data")
     plt.xlabel("Array Size")
     plt.ylabel("Time (s)")
+    plt.ylim(0, 0.1)
     
     for algo in [insertion_sort, merge_sort, quick_sort, quick_insertion_sort]:
         x, y = plot_sort_time_using_random_arrays(algo)
@@ -48,6 +49,7 @@ def main():
     plt.title("Performance on Sorted Data")
     plt.xlabel("Array Size")
     plt.ylabel("Time (s)")
+    plt.ylim(0, 0.1)
     
     for algo in [insertion_sort, merge_sort, quick_sort, quick_insertion_sort]:
         x, y = plot_sort_time_using_sorted_z(algo)
@@ -58,14 +60,17 @@ def main():
 
     # New test for hybrid sort
     plt.figure("Hybrid Sort Test")
+    plt.ylim(0, 0.1)
     
     # Test hybrid on random data
     x_rand, y_rand = plot_sort_time_using_random_arrays(quick_insertion_sort)
     plt.plot(x_rand, y_rand, 'g--', label="Hybrid (Random)")
+    plt.ylim(0, 0.1)
     
     # Test hybrid on sorted data
     x_sorted, y_sorted = plot_sort_time_using_sorted_z(quick_insertion_sort)
     plt.plot(x_sorted, y_sorted, 'm--', label="Hybrid (Sorted)")
+    plt.ylim(0, 0.1)
     
     plt.legend()
     plt.show()
