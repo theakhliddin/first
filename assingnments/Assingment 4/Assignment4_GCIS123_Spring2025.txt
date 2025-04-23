@@ -1,0 +1,73 @@
+﻿Assignment 4
+GCIS123, Spring 2025
+Title: Dynamic Happiness Index Measurement System
+Total Marks: 100
+Activity Overview: 
+In this Activity, you will design and implement a Dynamic Happiness Index Measurement System using Python. This system allows users to dynamically input data for multiple countries, assessing their happiness indices based on various factors. The project focuses on reinforcing your understanding of Python classes, user interaction, and the implementation of dynamic data input.
+1. Activity Learning Objectives:
+• Enhance your understanding of Python classes, object-oriented programming (OOP) principles, and encapsulation.
+• Practice dynamic data input to create a more interactive user experience.
+• Learn to manage a list of objects within a class (e.g., HappinessMeter managing Country instances).
+• Apply mathematical calculation to determine happiness indices based on user-provided factors.
+
+2. Key Requirements:
+I. Country Class: [20 Points]
+
+• Create a Country class to represent individual countries.
+• Include private fields for the country's name, environment, economy, culture, healthcare, and education.
+• Implement encapsulation effectively through private fields and accessor (getter) and mutator (setter) methods for each private field. 
+
+II. HappinessMeter Class: [20 Points]
+
+• Develop a HappinessMeter class to manage a list of countries.
+• Implement methods to add countries to the meter and measure the happiness of each country.
+• Design and implement a method <<measure_happiness()>> to calculate happiness based on the provided factors in Country Class. You will be able to access the factors values by calling Accessors (methods).
+
+
+III. User Interaction: [20 Points]
+
+• In the main function, create an instance of HappinessMeter.
+• Prompt the user to enter the number of countries they want to assess.
+
+IV. Dynamic Data Input: [20 Points]
+
+• Successful implementation and demonstration of dynamic user interaction by prompting the user to input data for each country.
+• For each country, prompt for the name and factors (environment, economy, culture, healthcare, education).
+• Use setter methods to update the attributes of the Country instance dynamically.
+
+V. Measure and Display Happiness: [20 Points]
+
+• Call the measure_happiness method on the HappinessMeter instance (or any instance you want to create) to calculate (average calculation formula) and display the happiness index for each country. Round off the happiness index for each country by maximum 2 decimal digits (Examples 24.23).
+
+3. Sample Output:
+
+Enter the number of countries: 2
+Enter the name of country 1: KSA
+Enter environment factor (0-100): 80
+Enter economy factor (0-100): 80
+Enter culture factor (0-100): 80
+Enter healthcare factor (0-100): 80
+Enter education factor (0-100): 80
+Enter the name of country 2: Singapore
+Enter environment factor (0-100): 80
+Enter economy factor (0-100): 90
+Enter culture factor (0-100): 80
+Enter healthcare factor (0-100): 80
+Enter education factor (0-100): 80
+Happiness Measurement:
+KSA : 80.0
+Singapore : 82.0
+
+4. Rubrics
+
+CriteriaMax MarksExcellent (Full Marks)I. Country Class Design20All fields are private, full use of getters/setters, follows encapsulation principlesII. HappinessMeter Class Design20Correctly manages country objects, includes full happiness logic with method reuseIII. User Interaction (Main Program)20User prompted clearly and dynamically; number of countries handled properlyIV. Dynamic Data Input20Each country added dynamically with input; setter methods used appropriatelyV. Measure & Display Happiness20Correct average calculation; formatted output with 2 decimal roundingCode Documentation & StructureMandatoryMeaningful comments, docstrings, and logical structure (included in grading)Submission & CollaborationMandatorySubmitted on both GitHub and MyCourses; group members clearly listed (included in grading)Penalty: Deduction of marks for hardcoding, lack of class structure, or duplicate/incomplete code.
+
+
+5. Key Deliverables:
+• Python code implementing the Dynamic Happiness Index Measurement System.
+• DocString and comments in the code explaining the design choices, features implemented, and how the classes interact.
+Submit your work on MyCourses as well Github. 1 submission per group is required. Every student will obtain marks based on understanding of whole assignment + code and able to present properly.
+
+6. Summary:
+This activity provides a hands-on experience in creating a dynamic and interactive Happiness Index Measurement System using Object Oriented Programming concepts in a high-level language like python. Enjoy the process of building a system that allows users to assess and compare happiness indices for various countries!
+
