@@ -92,7 +92,7 @@ class HappinessMeter:
 
     def measure_happiness(self):
         #Calculates and prints the happiness score of each country in the list.            
-        print("\nHappiness Scores:")
+        print("\nHappiness Measurement:")
         for country in self.__countries:
             total = (country.get_environment() + country.get_economy() +
                      country.get_culture() + country.get_healthcare() +
