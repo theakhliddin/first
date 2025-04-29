@@ -66,7 +66,7 @@ print(sorted_array) #[1, 2, 3, 4, 5, 6, 7, 8]
     "Heap Sort": {"Best": "O(n log n)", "Average": "O(n log n)", "Worst": "O(n log n)"},
     "Radix Sort": {"Best": "O(nk)", "Average": "O(nk)", "Worst": "O(nk)"},
 """
-#9
+#9c
 class Book:
     __slots__ = ['__title', '__isbn']
 
@@ -76,3 +76,16 @@ class Book:
 
     def get_isbn(self) -> int:
         return self.__isbn
+    
+
+def function(num):
+    result = num % 2 == 0 and not num % 4 == 0
+    return result
+
+def main():
+    print(function(6))  # True
+    print(function(8))  # False
+
+if __name__ == "__main__":
+    main()
+    
