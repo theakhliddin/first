@@ -17,7 +17,7 @@ class Country:
     #  Getter Methods 
 
     def get_name(self):
-        #Returns the name of the country.
+        #Returns the name of the country.2
         return self.__name
 
     def get_environment(self):
